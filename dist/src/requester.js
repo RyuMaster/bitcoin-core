@@ -1,40 +1,28 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _lodash = require("lodash");
 
 /**
  * Module dependencies.
  */
 
+import { includes } from 'lodash';
+
 /**
  * Export Requester class.
  */
-class Requester {
-  constructor({
-    unsupported = [],
-    version
-  } = {}) {
+
+export default class Requester {
+  constructor({ unsupported = [], version } = {}) {
     this.unsupported = unsupported;
     this.version = version;
   }
+
   /**
   * Prepare rpc request.
   */
 
-
-  prepare({
-    method,
-    parameters = [],
-    suffix
-  }) {
+  prepare({ method, parameters = [], suffix }) {
     method = method.toLowerCase();
 
-    if (this.version && (0, _lodash.includes)(this.unsupported, method)) {
+    if (this.version && includes(this.unsupported, method)) {
       throw new Error(`Method "${method}" is not supported by version "${this.version}"`);
     }
 
@@ -44,7 +32,4 @@ class Requester {
       params: parameters
     };
   }
-
 }
-
-exports.default = Requester;
