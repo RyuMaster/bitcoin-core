@@ -3,7 +3,7 @@
  * Module dependencies.
  */
 
-import { assign, defaults, get, has, isArray, isEmpty, isPlainObject, isString, map, mapKeys } from 'lodash';
+import { defaults, get, has, isArray, isEmpty, isString, map, mapKeys } from 'lodash';
 import methods from '../methods';
 
 /**
@@ -73,11 +73,9 @@ function obfuscateRequestBody(body) {
     return body;
   }
 
-  if (isPlainObject(body.params)) {
-    return assign(body, { params: method.named(body.params) });
-  }
+  body.params = method(body.params);
 
-  return assign(body, { params: method.default(body.params) });
+  return body;
 }
 
 /**
