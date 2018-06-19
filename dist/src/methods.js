@@ -1,16 +1,22 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _lodash = require("lodash");
+
 /* eslint-disable no-inline-comments */
 
 /**
  * Module dependencies.
  */
 
-import { map, set } from 'lodash';
-
 /**
  * Export available rpc methods.
  */
-
-export default {
+var _default = {
   abandonTransaction: {
     category: 'wallet',
     features: {
@@ -112,7 +118,7 @@ export default {
       multiwallet: '>=0.15.0'
     },
     obfuscate: {
-      request: params => set([...params], '[0]', '******')
+      request: params => (0, _lodash.set)([...params], '[0]', '******')
     },
     version: '>=0.1.0'
   },
@@ -365,7 +371,7 @@ export default {
       multiwallet: '>=0.15.0'
     },
     obfuscate: {
-      request: params => set(params, '[0]', map(params[0], request => set(request, 'keys', map(request.keys, () => '******'))))
+      request: params => (0, _lodash.set)(params, '[0]', (0, _lodash.map)(params[0], request => (0, _lodash.set)(request, 'keys', (0, _lodash.map)(request.keys, () => '******'))))
     },
     version: '>=0.14.0'
   },
@@ -572,14 +578,14 @@ export default {
   signMessageWithPrivKey: {
     category: 'util',
     obfuscate: {
-      request: params => set([...params], '[0]', '******')
+      request: params => (0, _lodash.set)([...params], '[0]', '******')
     },
     version: '>=0.13.0'
   },
   signRawTransaction: {
     category: 'rawtransactions',
     obfuscate: {
-      request: params => set([...params], '[2]', map(params[2], () => '******'))
+      request: params => (0, _lodash.set)([...params], '[2]', (0, _lodash.map)(params[2], () => '******'))
     },
     version: '>=0.7.0'
   },
@@ -618,7 +624,7 @@ export default {
   walletPassphrase: {
     category: 'wallet',
     obfuscate: {
-      request: params => set([...params], '[0]', '******')
+      request: params => (0, _lodash.set)([...params], '[0]', '******')
     },
     version: '>=0.1.0'
   },
@@ -627,3 +633,4 @@ export default {
     version: '>=0.1.0'
   }
 };
+exports.default = _default;
