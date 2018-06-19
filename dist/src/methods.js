@@ -631,6 +631,48 @@ var _default = {
   walletPassphraseChange: {
     category: 'wallet',
     version: '>=0.1.0'
-  }
+  },
+  
+  
+  
+listlabels: {
+  category: 'wallet',
+  features: {
+	 multiwallet: '>=0.1.0'
+  },
+  version: '>=0.1.0'
+},
+getaddressesbylabel: {
+  category: 'wallet',
+  features: {
+	 multiwallet: '>=0.1.0'
+  },
+  version: '>=0.1.0'
+},
+name_register: {
+  category: 'wallet',
+  features: {
+	 multiwallet: '>=0.1.0'
+  },
+  version: '>=0.1.0'
+},
+name_list: {
+  category: 'wallet',
+  features: {
+	 multiwallet: '>=0.1.0'
+  },
+  version: '>=0.1.0'
+},
+name_pending: {
+  category: 'wallet',
+  features: {
+	 multiwallet: '>=0.1.0'
+  },
+  version: '>=0.1.0'
+}	  
+  
+  
+  
+  
 };
 exports.default = _default;
