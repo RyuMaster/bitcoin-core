@@ -623,6 +623,9 @@ var _default = {
   },
   walletPassphrase: {
     category: 'wallet',
+	features: {
+		 multiwallet: '>=0.1.0'
+	}, 	
     obfuscate: {
       request: params => (0, _lodash.set)([...params], '[0]', '******')
     },
