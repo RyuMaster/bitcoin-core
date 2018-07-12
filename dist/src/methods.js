@@ -54,7 +54,7 @@ var _default = {
     features: {
       multiwallet: '>=0.1.0'
     },
-    version: '>=0.3.12'
+    version: '>=0.1.0'
   },
   bumpFee: {
     category: 'wallet',
