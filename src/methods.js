@@ -613,10 +613,16 @@ export default {
   },
   walletLock: {
     category: 'wallet',
+	features: {
+		 multiwallet: '>=0.1.0'
+	}, 	
     version: '>=0.1.0'
   },
   walletPassphrase: {
     category: 'wallet',
+	features: {
+		 multiwallet: '>=0.1.0'
+	}, 	
     obfuscate: {
       request: params => set([...params], '[0]', '******')
     },
@@ -624,6 +630,9 @@ export default {
   },
   walletPassphraseChange: {
     category: 'wallet',
+	features: {
+		 multiwallet: '>=0.1.0'
+	}, 	
     version: '>=0.1.0'
   }
 };

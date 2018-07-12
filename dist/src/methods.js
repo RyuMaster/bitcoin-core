@@ -619,6 +619,9 @@ var _default = {
   },
   walletLock: {
     category: 'wallet',
+	features: {
+		 multiwallet: '>=0.1.0'
+	}, 	
     version: '>=0.1.0'
   },
   walletPassphrase: {
@@ -633,6 +636,9 @@ var _default = {
   },
   walletPassphraseChange: {
     category: 'wallet',
+	features: {
+		 multiwallet: '>=0.1.0'
+	}, 	
     version: '>=0.1.0'
   },
   
