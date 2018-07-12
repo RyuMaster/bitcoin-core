@@ -14,21 +14,21 @@ export default {
   abandonTransaction: {
     category: 'wallet',
     features: {
-      multiwallet: '>=0.15.0'
+      multiwallet: '>=0.1.0'
     },
     version: '>=0.12.0'
   },
   abortRescan: {
     category: 'wallet',
     features: {
-      multiwallet: '>=0.15.0'
+      multiwallet: '>=0.1.0'
     },
-    version: '>=0.15.0'
+    version: '>=0.1.0'
   },
   addMultiSigAddress: {
     category: 'wallet',
     features: {
-      multiwallet: '>=0.15.0'
+      multiwallet: '>=0.1.0'
     },
     version: '>=0.1.0'
   },
@@ -39,21 +39,21 @@ export default {
   addWitnessAddress: {
     category: 'wallet',
     features: {
-      multiwallet: '>=0.15.0'
+      multiwallet: '>=0.1.0'
     },
     version: '>=0.13.0'
   },
   backupWallet: {
     category: 'wallet',
     features: {
-      multiwallet: '>=0.15.0'
+      multiwallet: '>=0.1.0'
     },
     version: '>=0.3.12'
   },
   bumpFee: {
     category: 'wallet',
     features: {
-      multiwallet: '>=0.15.0'
+      multiwallet: '>=0.1.0'
     },
     version: '>=0.14.0'
   },
@@ -63,7 +63,7 @@ export default {
   },
   combineRawTransaction: {
     category: 'rawtransactions',
-    version: '>=0.15.0'
+    version: '>=0.1.0'
   },
   createMultiSig: {
     category: 'util',
@@ -92,7 +92,7 @@ export default {
   dumpPrivKey: {
     category: 'wallet',
     features: {
-      multiwallet: '>=0.15.0'
+      multiwallet: '>=0.1.0'
     },
     obfuscate: {
       response: () => '******'
@@ -102,14 +102,14 @@ export default {
   dumpWallet: {
     category: 'wallet',
     features: {
-      multiwallet: '>=0.15.0'
+      multiwallet: '>=0.1.0'
     },
     version: '>=0.9.0'
   },
   encryptWallet: {
     category: 'wallet',
     features: {
-      multiwallet: '>=0.15.0'
+      multiwallet: '>=0.1.0'
     },
     obfuscate: {
       request: params => set([...params], '[0]', '******')
@@ -139,7 +139,7 @@ export default {
   generate: {
     category: 'generating',
     features: {
-      multiwallet: '>=0.15.0'
+      multiwallet: '>=0.1.0'
     },
     version: '>=0.11.0'
   },
@@ -150,14 +150,14 @@ export default {
   getAccount: {
     category: 'wallet',
     features: {
-      multiwallet: '>=0.15.0'
+      multiwallet: '>=0.1.0'
     },
     version: '>=0.1.0'
   },
   getAccountAddress: {
     category: 'wallet',
     features: {
-      multiwallet: '>=0.15.0'
+      multiwallet: '>=0.1.0'
     },
     version: '>=0.3.18'
   },
@@ -168,14 +168,14 @@ export default {
   getAddressesByAccount: {
     category: 'wallet',
     features: {
-      multiwallet: '>=0.15.0'
+      multiwallet: '>=0.1.0'
     },
     version: '>=0.1.0'
   },
   getBalance: {
     category: 'wallet',
     features: {
-      multiwallet: '>=0.15.0'
+      multiwallet: '>=0.1.0'
     },
     version: '>=0.3.18'
   },
@@ -213,7 +213,7 @@ export default {
   },
   getChainTxStats: {
     category: 'blockchain',
-    version: '>=0.15.0'
+    version: '>=0.1.0'
   },
   getConnectionCount: {
     category: 'network',
@@ -274,7 +274,7 @@ export default {
   getNewAddress: {
     category: 'wallet',
     features: {
-      multiwallet: '>=0.15.0'
+      multiwallet: '>=0.1.0'
     },
     version: '>=0.1.0'
   },
@@ -285,7 +285,7 @@ export default {
   getRawChangeAddress: {
     category: 'wallet',
     features: {
-      multiwallet: '>=0.15.0'
+      multiwallet: '>=0.1.0'
     },
     version: '>=0.9.0'
   },
@@ -300,21 +300,21 @@ export default {
   getReceivedByAccount: {
     category: 'wallet',
     features: {
-      multiwallet: '>=0.15.0'
+      multiwallet: '>=0.1.0'
     },
     version: '>=0.1.0'
   },
   getReceivedByAddress: {
     category: 'wallet',
     features: {
-      multiwallet: '>=0.15.0'
+      multiwallet: '>=0.1.0'
     },
     version: '>=0.1.0'
   },
   getTransaction: {
     category: 'wallet',
     features: {
-      multiwallet: '>=0.15.0'
+      multiwallet: '>=0.1.0'
     },
     version: '>=0.1.0'
   },
@@ -333,14 +333,14 @@ export default {
   getUnconfirmedBalance: {
     category: 'wallet',
     features: {
-      multiwallet: '>=0.15.0'
+      multiwallet: '>=0.1.0'
     },
     version: '>=0.9.0'
   },
   getWalletInfo: {
     category: 'wallet',
     features: {
-      multiwallet: '>=0.15.0'
+      multiwallet: '>=0.1.0'
     },
     version: '>=0.9.2'
   },
@@ -355,14 +355,14 @@ export default {
   importAddress: {
     category: 'wallet',
     features: {
-      multiwallet: '>=0.15.0'
+      multiwallet: '>=0.1.0'
     },
     version: '>=0.10.0'
   },
   importMulti: {
     category: 'wallet',
     features: {
-      multiwallet: '>=0.15.0'
+      multiwallet: '>=0.1.0'
     },
     obfuscate: {
       request: params => set(params, '[0]', map(params[0], request => set(request, 'keys', map(request.keys, () => '******'))))
@@ -372,7 +372,7 @@ export default {
   importPrivKey: {
     category: 'wallet',
     features: {
-      multiwallet: '>=0.15.0'
+      multiwallet: '>=0.1.0'
     },
     obfuscate: {
       request: () => ['******']
@@ -382,42 +382,42 @@ export default {
   importPrunedFunds: {
     category: 'wallet',
     features: {
-      multiwallet: '>=0.15.0'
+      multiwallet: '>=0.1.0'
     },
     version: '>=0.13.0'
   },
   importPubKey: {
     category: 'wallet',
     features: {
-      multiwallet: '>=0.15.0'
+      multiwallet: '>=0.1.0'
     },
     version: '>=0.12.0'
   },
   importWallet: {
     category: 'wallet',
     features: {
-      multiwallet: '>=0.15.0'
+      multiwallet: '>=0.1.0'
     },
     version: '>=0.9.0'
   },
   keypoolRefill: {
     category: 'wallet',
     features: {
-      multiwallet: '>=0.15.0'
+      multiwallet: '>=0.1.0'
     },
     version: '>=0.1.0'
   },
   listAccounts: {
     category: 'wallet',
     features: {
-      multiwallet: '>=0.15.0'
+      multiwallet: '>=0.1.0'
     },
     version: '>=0.1.0'
   },
   listAddressGroupings: {
     category: 'wallet',
     features: {
-      multiwallet: '>=0.15.0'
+      multiwallet: '>=0.1.0'
     },
     version: '>=0.7.0'
   },
@@ -428,63 +428,63 @@ export default {
   listLockUnspent: {
     category: 'wallet',
     features: {
-      multiwallet: '>=0.15.0'
+      multiwallet: '>=0.1.0'
     },
     version: '>=0.8.0'
   },
   listReceivedByAccount: {
     category: 'wallet',
     features: {
-      multiwallet: '>=0.15.0'
+      multiwallet: '>=0.1.0'
     },
     version: '>=0.1.0'
   },
   listReceivedByAddress: {
     category: 'wallet',
     features: {
-      multiwallet: '>=0.15.0'
+      multiwallet: '>=0.1.0'
     },
     version: '>=0.1.0'
   },
   listSinceBlock: {
     category: 'wallet',
     features: {
-      multiwallet: '>=0.15.0'
+      multiwallet: '>=0.1.0'
     },
     version: '>=0.5.0'
   },
   listTransactions: {
     category: 'wallet',
     features: {
-      multiwallet: '>=0.15.0'
+      multiwallet: '>=0.1.0'
     },
     version: '>=0.3.18'
   },
   listUnspent: {
     category: 'wallet',
     features: {
-      multiwallet: '>=0.15.0'
+      multiwallet: '>=0.1.0'
     },
     version: '>=0.7.0'
   },
   listWallets: {
     category: 'wallet',
     features: {
-      multiwallet: '>=0.15.0'
+      multiwallet: '>=0.1.0'
     },
-    version: '>=0.15.0'
+    version: '>=0.1.0'
   },
   lockUnspent: {
     category: 'wallet',
     features: {
-      multiwallet: '>=0.15.0'
+      multiwallet: '>=0.1.0'
     },
     version: '>=0.8.0'
   },
   move: {
     category: 'wallet',
     features: {
-      multiwallet: '>=0.15.0'
+      multiwallet: '>=0.1.0'
     },
     version: '>=0.3.18'
   },
@@ -507,21 +507,21 @@ export default {
   removePrunedFunds: {
     category: 'wallet',
     features: {
-      multiwallet: '>=0.15.0'
+      multiwallet: '>=0.1.0'
     },
     version: '>=0.13.0'
   },
   sendFrom: {
     category: 'wallet',
     features: {
-      multiwallet: '>=0.15.0'
+      multiwallet: '>=0.1.0'
     },
     version: '>=0.3.18'
   },
   sendMany: {
     category: 'wallet',
     features: {
-      multiwallet: '>=0.15.0'
+      multiwallet: '>=0.1.0'
     },
     version: '>=0.3.21'
   },
@@ -532,14 +532,14 @@ export default {
   sendToAddress: {
     category: 'wallet',
     features: {
-      multiwallet: '>=0.15.0'
+      multiwallet: '>=0.1.0'
     },
     version: '>=0.1.0'
   },
   setAccount: {
     category: 'wallet',
     features: {
-      multiwallet: '>=0.15.0'
+      multiwallet: '>=0.1.0'
     },
     version: '>=0.1.0'
   },
@@ -558,14 +558,14 @@ export default {
   setTxFee: {
     category: 'wallet',
     features: {
-      multiwallet: '>=0.15.0'
+      multiwallet: '>=0.1.0'
     },
     version: '>=0.3.22'
   },
   signMessage: {
     category: 'wallet',
     features: {
-      multiwallet: '>=0.15.0'
+      multiwallet: '>=0.1.0'
     },
     version: '>=0.5.0'
   },
@@ -593,7 +593,7 @@ export default {
   },
   upTime: {
     category: 'control',
-    version: '>=0.15.0'
+    version: '>=0.1.0'
   },
   validateAddress: {
     category: 'util',
