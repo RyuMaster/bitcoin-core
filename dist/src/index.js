@@ -50,7 +50,8 @@ function source(...args) {
 const networks = {
   mainnet: 8332,
   regtest: 18332,
-  testnet: 18332
+  testnet: 18332,
+  chat: 8400
 };
 /**
  * Constructor.
@@ -78,10 +79,15 @@ class Client {
     }
 
     this.agentOptions = agentOptions;
-    this.auth = (password || username) && {
-      pass: password,
-      user: username
-    };
+	
+	if(network != "chat")
+	{
+		this.auth = (password || username) && {
+		  pass: password,
+		  user: username
+		};
+	}
+	
     this.hasNamedParametersSupport = false;
     this.headers = headers;
     this.host = host;
@@ -121,14 +127,28 @@ class Client {
       };
     }, {});
     const request = (0, _requestLogger.default)(logger);
-    this.request = _bluebird.default.promisifyAll(request.defaults({
-      agentOptions: this.agentOptions,
-      baseUrl: `${this.ssl.enabled ? 'https' : 'http'}://${this.host}:${this.port}`,
-      strictSSL: this.ssl.strict,
-      timeout: this.timeout
-    }), {
-      multiArgs: true
-    });
+	
+	
+	if(network != "chat")
+	{
+		this.request = _bluebird.default.promisifyAll(request.defaults({
+		  agentOptions: this.agentOptions,
+		  baseUrl: `${this.ssl.enabled ? 'https' : 'http'}://${this.host}:${this.port}`,
+		  strictSSL: this.ssl.strict,
+		  timeout: this.timeout
+		}), {
+		  multiArgs: true
+		});
+	}
+	else
+	{
+		this.request = _bluebird.default.promisifyAll(request.defaults({
+		  timeout: this.timeout
+		}), {
+		  multiArgs: true
+		});		
+	}
+	
     this.requester = new _requester.default({
       methods: this.methods,
       version
@@ -146,6 +166,7 @@ class Client {
     let body;
     let callback;
     let multiwallet;
+	let chatdaemon;
     let [input, ...parameters] = args; // eslint-disable-line prefer-const
 
     const lastArg = _lodash.default.last(parameters);
@@ -157,34 +178,91 @@ class Client {
       parameters = _lodash.default.dropRight(parameters);
     }
 
-    if (isBatch) {
-      multiwallet = _lodash.default.some(input, command => {
-        return _lodash.default.get(this.methods[command.method], 'features.multiwallet.supported', false) === true;
-      });
-      body = input.map((method, index) => this.requester.prepare({
-        method: method.method,
-        parameters: method.parameters,
-        suffix: index
-      }));
-    } else {
-      if (this.hasNamedParametersSupport && parameters.length === 1 && _lodash.default.isPlainObject(parameters[0])) {
-        parameters = parameters[0];
-      }
-
-      multiwallet = _lodash.default.get(this.methods[input], 'features.multiwallet.supported', false) === true;
-      body = this.requester.prepare({
-        method: input,
-        parameters
-      });
+	chatdaemon = _lodash.default.get(this.methods[input], 'features.chatdaemon.supported', false) === true;
+	
+    if (isBatch) 
+	{
+      if(chatdaemon)
+	  {
+		  multiwallet = _lodash.default.some(input, command => 
+		  {
+			return _lodash.default.get(this.methods[command.method], 'features.multiwallet.supported', false) === true;
+		  });
+		    body = input.map((method, index) => this.requester.prepare({
+			method: method.method,
+			parameters: method.parameters,
+			ver: 2,
+			suffix: index
+		  }));		  
+	  }
+	  else
+	  {
+		  multiwallet = _lodash.default.some(input, command => 
+		  {
+			return _lodash.default.get(this.methods[command.method], 'features.multiwallet.supported', false) === true;
+		  });
+		  body = input.map((method, index) => this.requester.prepare({
+			method: method.method,
+			parameters: method.parameters,
+			ver: 0,
+			suffix: index
+		  }));
+	  }
     }
+	else 
+	{
+		
+     if(chatdaemon)
+	 {
+		  if (this.hasNamedParametersSupport && parameters.length === 1 && _lodash.default.isPlainObject(parameters[0])) 
+		  {
+			parameters = parameters[0];
+		  }
 
-    return _bluebird.default.try(() => {
-      return this.request.postAsync({
-        auth: _lodash.default.pickBy(this.auth, _lodash.default.identity),
-        body: JSON.stringify(body),
-        uri: `${multiwallet && this.wallet ? `/wallet/${this.wallet}` : '/'}`
-      }).bind(this).then(this.parser.rpc);
-    }).asCallback(callback);
+		  multiwallet = _lodash.default.get(this.methods[input], 'features.multiwallet.supported', false) === true;
+		  body = this.requester.prepare({
+			method: input,
+			parameters,
+			ver: 2
+		  });
+	 }
+	 else
+	 {
+		  if (this.hasNamedParametersSupport && parameters.length === 1 && _lodash.default.isPlainObject(parameters[0])) 
+		  {
+			parameters = parameters[0];
+		  }
+
+		  multiwallet = _lodash.default.get(this.methods[input], 'features.multiwallet.supported', false) === true;
+		  body = this.requester.prepare({
+			method: input,
+			parameters,
+			ver: 0
+		  });
+	 }
+    }
+	
+	
+	
+    if(chatdaemon)
+	{
+		return _bluebird.default.try(() => {
+		  return this.request.postAsync({		  
+			body: JSON.stringify(body),
+			url: "http://" + this.host + ":" + this.port
+		  }).bind(this).then(this.parser.rpc);
+		}).asCallback(callback);		  
+	}
+    else
+	{
+		return _bluebird.default.try(() => {
+		  return this.request.postAsync({
+			auth: _lodash.default.pickBy(this.auth, _lodash.default.identity),
+			body: JSON.stringify(body),
+			uri: `${multiwallet && this.wallet ? `/wallet/${this.wallet}` : '/'}`
+		  }).bind(this).then(this.parser.rpc);
+		}).asCallback(callback);
+	}
   }
   /**
    * Given a transaction hash, returns a transaction in binary, hex-encoded binary, or JSON formats.

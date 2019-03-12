@@ -30,6 +30,7 @@ class Requester {
   prepare({
     method,
     parameters = [],
+	ver,
     suffix
   }) {
     method = method.toLowerCase();
@@ -38,11 +39,23 @@ class Requester {
       throw new Error(`Method "${method}" is not supported by version "${this.version}"`);
     }
 
-    return {
-      id: `${Date.now()}${suffix !== undefined ? `-${suffix}` : ''}`,
-      method,
-      params: parameters
-    };
+	if(ver == 2)
+	{
+		return {
+		  id: `${Date.now()}${suffix !== undefined ? `-${suffix}` : ''}`,
+		  method,
+		  jsonrpc: "2.0",
+		  params: parameters
+		};		
+	}
+	else
+	{
+		return {
+		  id: `${Date.now()}${suffix !== undefined ? `-${suffix}` : ''}`,
+		  method,
+		  params: parameters
+		};
+	}
   }
 
 }
