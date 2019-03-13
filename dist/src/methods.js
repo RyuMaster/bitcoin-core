@@ -687,7 +687,7 @@ name_update: {
   },
   version: '>=0.1.0'
 }  
- ,
+,
 getnamestate: 
 {
   category: 'wallet',
@@ -696,7 +696,7 @@ getnamestate:
   },  
   version: '>=0.15.1'
 } 
-   ,
+,
 authwithwallet: 
 {
   category: 'wallet',
@@ -705,7 +705,15 @@ authwithwallet:
   },  
   version: '>=0.15.1'
 } 
-  
+,
+getcurrentstate: 
+{
+  category: 'wallet',
+  features: {
+	 chatdaemon: '>=0.15.1'
+  },  
+  version: '>=0.15.1'
+}   
   
 };
 exports.default = _default;
